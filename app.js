@@ -1,16 +1,13 @@
+var config = require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-
 var getRouter = require("./routes/get");
 var usersRouter = require("./routes/users");
 
 var app = express();
-
-const options = require("./knexfile.js");
-const knex = require("knex")(options);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -24,8 +21,12 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use((req, res, next) => {
   req.db = knex;
+  req.cf = config;
   next();
 });
+
+const options = require("./knexfile.js");
+const knex = require("knex")(options);
 
 app.use("/", getRouter);
 app.use("/users", usersRouter);

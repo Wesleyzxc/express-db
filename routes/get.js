@@ -11,8 +11,7 @@ router.get("/offences", function(req, res) {
     .from("staff")
     .select("*")
     .then(rows => {
-      console.log(rows);
-      res.json({ rows });
+      res.json(rows);
     })
     .catch(err => {
       // Shouldn't be here unless changes in db
