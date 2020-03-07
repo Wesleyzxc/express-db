@@ -5,7 +5,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var getRouter = require("./routes/get");
-var usersRouter = require("./routes/users");
+//var usersRouter = require("./routes/users");
 
 var app = express();
 
@@ -29,7 +29,7 @@ const options = require("./knexfile.js");
 const knex = require("knex")(options);
 
 app.use("/", getRouter);
-app.use("/users", usersRouter);
+//app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

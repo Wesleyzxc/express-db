@@ -7,14 +7,3 @@ module.exports = {
     password: process.env.PASSWORD
   }
 };
-
-// // local test
-// module.exports = {
-//   client: "mysql",
-//   connection: {
-//     host: "localhost",
-//     database: "shop",
-//     user: "root",
-//     password: ""
-//   }
-// };
