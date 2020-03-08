@@ -9,6 +9,8 @@ var getRouter = require("./routes/get");
 
 var app = express();
 
+const swaggerUI = require("swagger-ui-express");
+const swaggerDocument = require("./docs/swaggerUI.json");
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -29,6 +31,7 @@ const options = require("./knexfile.js");
 const knex = require("knex")(options);
 
 app.use("/", getRouter);
+app.use("/", swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 //app.use("/users", usersRouter);
 
 // catch 404 and forward to error handler

@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-/* GET home page. */
-router.get("/", function(req, res, next) {
-  res.render("index", { title: "The World Database API" });
-});
-
-router.get("/offences", function(req, res) {
+router.get("/staff", function(req, res) {
   req.db
     .from("staff")
     .select("*")
